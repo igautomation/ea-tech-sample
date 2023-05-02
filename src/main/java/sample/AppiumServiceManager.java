@@ -22,7 +22,7 @@ class AppiumServiceManager {
     }
 
     public AppiumDriverLocalService buildService () {
-        final var logFile = Path.of (USER_DIR, "logs", "appium-android.log")
+        final var logFile = Path.of (USER_DIR, "logs", "appium-test.log")
             .toFile ();
         final var builder = new AppiumServiceBuilder ();
         return builder.withIPAddress ("127.0.0.1")
