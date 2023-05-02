@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="EA Mobile Automation Suite"  parallel="classes" verbose="10">
+
+    <listeners>
+        <listener
+                class-name="sample.listeners.ExtentReports"/>
+    </listeners>
+
+    <test name="ea-coding-test">
+        <classes>
+            <class name="sample.IOSFestivalTest" />
+        </classes>
+    </test>
+
+</suite>

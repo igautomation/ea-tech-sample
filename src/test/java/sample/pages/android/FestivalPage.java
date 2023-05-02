@@ -1,3 +1,11 @@
+/**
+ * @author [Muhammad Imran]
+ * @email [muhammadghouseimran.zahirudeen@cognizant.com]
+ * @create date 2023-05-01 21:30:20
+ * @modify date 2023-05-01 21:30:20
+ * @desc [Create and Filter List from App view]
+ */
+
 package sample.pages.android;
 
 import static io.appium.java_client.AppiumBy.androidUIAutomator;

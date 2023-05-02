@@ -1,3 +1,12 @@
+/**
+ * @author [Muhammad Imran]
+ * @email [muhammadghouseimran.zahirudeen@cognizant.com]
+ * @create date 2023-05-02 08:40:17
+ * @modify date 2023-05-02 08:40:17
+ * @desc [Test Class for Android Test]
+ */
+
+
 package sample;
 
 import java.time.Duration;
@@ -54,7 +63,6 @@ public class AndroidFestivalTest {
                         final var actualBand = festivalPage.getFestivals (name, title);
 
                         softAssert.assertTrue (actualBand.isPresent (), title + " is not present");
-                        //noinspection ConstantValue
                         if (actualBand.isPresent ()) {
                             softAssert.assertEquals (actualBand.get ()
                                     .title (), title, title + " is not visible on UI");

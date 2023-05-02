@@ -1,3 +1,12 @@
+/**
+ * @author [Muhammad Imran]
+ * @email [muhammadghouseimran.zahirudeen@cognizant.com]
+ * @create date 2023-05-02 16:15:05
+ * @modify date 2023-05-02 16:15:05
+ * @desc [Retrieve & Store Festival and Band details from App View]
+ */
+
+
 package sample.pages.ios;
 
 import static io.appium.java_client.AppiumBy.iOSNsPredicateString;

@@ -1,3 +1,11 @@
+/**
+ * @author [Muhammad Imran]
+ * @email [muhammadghouseimran.zahirudeen@cognizant.com]
+ * @create date 2023-05-02 16:15:05
+ * @modify date 2023-05-02 16:15:05
+ * @desc [Initialization of iOS Driver & setting the capabilities required for the test of iOS App]
+ */
+
 package sample;
 
 import static java.lang.System.getProperty;

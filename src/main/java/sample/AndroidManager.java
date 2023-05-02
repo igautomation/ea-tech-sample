@@ -1,3 +1,11 @@
+/**
+ * @author [Muhammad Imran]
+ * @email [muhammadghouseimran.zahirudeen@cognizant.com]
+ * @create date 2023-05-01 21:30:20
+ * @modify date 2023-05-01 21:30:20
+ * @desc [Initialization of Android Driver & setting the capabilities required for the test of Android App]
+ */
+
 package sample;
 
 import static java.lang.System.getProperty;
