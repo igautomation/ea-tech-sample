@@ -215,9 +215,9 @@ Replace "/path/to/testng.jar" with the path to the TestNG JAR file, and "/path/t
 ## Assumption
 
 * Record Label is not implemented in both the apps [iOS, Android]
-* API response is not static the response elements changes on each call in the test
-* Android App List is not displaying "Band" item with no "Festival" data
-* iOS App List is not displaying repeated "Band" item even with unique "Festival"
+* API response is not static and inconsistent. Response Data changes on each call in the test
+* Android App List view is not displaying "Band" item with no "Festival" data
+* iOS App List view is not displaying repeated "Band" item even with unique "Festival" data
 
 
 ## Test Scenarios Covered both iOS and Android
