@@ -1,3 +1,21 @@
 
+T
+$.idea/codeStyles/codeStyleConfig.xml,d/d/dd7b3350c29c49497756c7f32c69a3bed18b1cba
+\
+,.idea/inspectionProfiles/Project_Default.xml,4/9/496a238a6afa168dbaf6efd37bb459331589579c
+G
+logs/appium-android.log,8/c/8c916814457ca7f1642c8669ad3fa5e803aeefcf
 Å
-Q.idea/sonarlint/securityhotspotstore/0/0/00a4683375f138b53eb45145d8e91a658322dd6a,d/7/d78e80c095ed7cb2d6f241d9ffe9841868fc659b
+Q.idea/sonarlint/securityhotspotstore/d/7/d78e80c095ed7cb2d6f241d9ffe9841868fc659b,6/e/6e083c5ae2d24ccf0dea630c0d906ac48f2056a3
+w
+G.idea/sonarlint/issuestore/d/7/d78e80c095ed7cb2d6f241d9ffe9841868fc659b,6/5/65f99024116c0b1b3ebe6b1cd82e5ca40fd1c894
+`
+0src/test/java/sample/pages/ios/FestivalPage.java,a/9/a910cf1062841d38509dbd09c650c93be5ebf995
+d
+4src/test/java/sample/pages/android/FestivalPage.java,e/7/e74330593c75f6aba53d0ce247153ed9e40779f5
+a
+1src/test/java/sample/listeners/ExtentReports.java,d/e/dec35f5369c5736e51fe340cd39d7cd552f25240
+^
+.src/main/java/sample/AppiumServiceManager.java,f/d/fd4b61712100f1702c723219ba93ee457a6b7891
+`
+0src/test/java/sample/pages/ios/FestivalItem.java,8/e/8e692549b05caa464f30f130955be47b72d2e426

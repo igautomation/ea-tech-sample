@@ -10,13 +10,17 @@
 package sample;
 
 import java.time.Duration;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.restassured.RestAssured;
+import io.restassured.matcher.ResponseAwareMatcher;
+import io.restassured.response.Response;
+import io.restassured.specification.Argument;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -24,6 +28,9 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import sample.pages.android.FestivalPage;
 import sample.pojo.Festival;
+
+import static org.hamcrest.Matchers.*;
+
 
 public class AndroidFestivalTest {
     private AndroidDriver            driver;
@@ -46,49 +53,73 @@ public class AndroidFestivalTest {
         this.service.stop ();
     }
 
-    @Test
+    @Test (priority = 2)
     public void testFestivalListingsAndroid () {
 
-        final List<Festival> festivals = getFestivalsAsList ();
+
+        List<Festival> festivals = new ArrayList<>();
+        List<Festival> festivalsAsList = getFestivalsAsList();
+        if (festivalsAsList != null) {
+            festivals = festivalsAsList.stream()
+                    .filter(Objects::nonNull) // filter out any null Festivals
+                    .sorted((a, b) -> {
+                        if (a.getName() != null && b.getName() != null) {
+                            return a.getName().compareToIgnoreCase(b.getName());
+                        }
+                        return 0; // return 0 if either name is null
+                    })
+                    .collect(Collectors.toList());
+        }
+
+
 
         final var festivalPage = new FestivalPage (this.wait);
         final var softAssert = new SoftAssert ();
 
-        if (festivals.size() > 0)  {
+        festivals.forEach (festival -> festival.getBands ()
+                .forEach (band -> {
+                    final var name = festival.getName () == null ? "Unknown" : festival.getName ();
+                    final var title = band.getName ();
+                    final var actualBand = festivalPage.getFestivals (name, title);
 
-            festivals.forEach (festival -> festival.getBands ()
-                    .forEach (band -> {
-                        final var name = festival.getName () == null ? "Unknown" : festival.getName ();
-                        final var title = band.getName ();
-                        final var actualBand = festivalPage.getFestivals (name, title);
+                    softAssert.assertTrue (actualBand.isPresent (), title + " is not present");
+                    if (actualBand.isPresent ()) {
+                        softAssert.assertEquals (actualBand.get ()
+                                .title (), title, title + " is not visible on UI");
+                        softAssert.assertEquals (actualBand.get ()
+                                .name (), name, name + " is not visible on UI");
+                    }
 
-                        softAssert.assertTrue (actualBand.isPresent (), title + " is not present");
-                        if (actualBand.isPresent ()) {
-                            softAssert.assertEquals (actualBand.get ()
-                                    .title (), title, title + " is not visible on UI");
-                            softAssert.assertEquals (actualBand.get ()
-                                    .name (), name, name + " is not visible on UI");
-                        }
+                }));
 
-                    }));
-
-            softAssert.assertAll ();
-
-        }
+        softAssert.assertAll ();
 
     }
 
+    @Test (priority = 1)
     private String getExpectedFestivals () {
+
         final var response = RestAssured.given ()
-                .baseUri ("https://eacp.energyaustralia.com.au")
-                .basePath ("/codingtest/api/v1")
-                .when ()
-                .get ("/festivals")
-                .body ()
+                .baseUri("https://eacp.energyaustralia.com.au")
+                .basePath("/codingtest/api/v1")
+                .when()
+                .get("/festivals")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .body(not(empty()))
+                .body("$", hasSize(greaterThanOrEqualTo(1))) // Assert that the response has at least one element
+                .body("name", not(empty()))
+                .body("bands", not(empty()))
+                .extract()
                 .asPrettyString ();
-        System.out.println (response);
+
+        System.out.println(response);
+
         return response;
+
     }
+
 
     private List<Festival> getFestivalsAsList () {
         final var festivalJson = getExpectedFestivals ();
