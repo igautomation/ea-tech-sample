@@ -210,3 +210,96 @@ $ java -cp "/path/to/testng.jar:/path/to/project/classes/" org.testng.TestNG sui
 ```
 
 Replace "/path/to/testng.jar" with the path to the TestNG JAR file, and "/path/to/project/classes/" with the path to the directory containing the compiled test classes.
+
+
+## Assumption
+
+* Record Label is not implemented in both the apps [iOS, Android]
+* API response is not static the response elements changes on each call in the test
+* Android App List is not displaying "Band" item with no "Festival" data
+* iOS App List is not displaying repeated "Band" item even with unique "Festival"
+
+
+## Test Scenarios Covered both iOS and Android
+The provided code is a Test class for Android Test, which contains the following methods:
+
+- `setupClass()`: Method with `@BeforeClass` annotation which sets up the required services before starting the tests.
+- `tearDownClass()`: Method with `@AfterClass` annotation which stops the running services after executing the tests.
+- `testFestivalListingsAndroid()`: Method with `@Test` annotation that contains test cases to verify the expected Festival listings.
+- `getExpectedFestivals()`: Private method that returns the expected Festival listings as a string.
+- `getFestivalsAsList()`: Private method that returns the expected Festival listings as a list of Festival objects.
+
+## Here are some test cases that can be used to test the `testFestivalListingsAndroid()` method:
+
+- Test Case 1: Verify that all the expected bands are present in their respective festivals.
+
+  Test Steps:
+    1. Get the expected Festivals from `getFestivalsAsList()` method.
+    2. Iterate over each festival in the expected festivals list.
+    3. For each festival, iterate over each band in the festival's bands list.
+    4. Verify that the band is present in the corresponding festival using `getFestivals()` method.
+
+  Expected Result: All the expected bands should be present in their respective festivals.
+
+- Test Case 2: Verify that the festival names and band titles are visible on the UI.
+
+  Test Steps:
+    1. Get the expected Festivals from `getFestivalsAsList()` method.
+    2. Iterate over each festival in the expected festivals list.
+    3. For each festival, iterate over each band in the festival's bands list.
+    4. Verify that the band is present in the corresponding festival using `getFestivals()` method.
+    5. Verify that the festival name and band title are visible on the UI.
+
+  Expected Result: The festival names and band titles should be visible on the UI.
+
+- Test Case 3: Verify that the expected and actual band names are equal.
+
+  Test Steps:
+    1. Get the expected Festivals from `getFestivalsAsList()` method.
+    2. Iterate over each festival in the expected festivals list.
+    3. For each festival, iterate over each band in the festival's bands list.
+    4. Verify that the band is present in the corresponding festival using `getFestivals()` method.
+    5. Verify that the expected and actual band names are equal.
+
+  Expected Result: The expected and actual band names should be equal.
+
+- Test Case 4: Verify that the expected and actual festival names are equal.
+
+  Test Steps:
+    1. Get the expected Festivals from `getFestivalsAsList()` method.
+    2. Iterate over each festival in the expected festivals list.
+    3. For each festival, iterate over each band in the festival's bands list.
+    4. Verify that the band is present in the corresponding festival using `getFestivals()` method.
+    5. Verify that the expected and actual festival names are equal.
+
+  Expected Result: The expected and actual festival names should be equal.
+
+
+## Test cases for the `getExpectedFestivals()` method:
+
+1. Test that the method returns a non-empty string when a valid API endpoint is provided.
+2. Test that the method throws an exception or returns an empty string when an invalid API endpoint is provided.
+3. Test that the method returns a string in JSON format when a valid API endpoint is provided.
+4. Test that the method returns a string that contains the expected data fields, such as `name` and `bands`.
+5. Test that the method returns a string that conforms to the expected data format, such as having a top-level JSON object that contains an array of festival objects.
+
+
+## Test Coverage
+
+Test cases for the `testFestivalListingsiOS` method:
+
+1. Verify that the method does not throw any exceptions when executed with valid input data.
+2. Verify that the `getFestivalsAsList()` method is called exactly once and returns a non-null list of festivals.
+3. Verify that the list of festivals is filtered to remove any null festivals.
+4. Verify that the list of festivals is sorted in alphabetical order by festival name.
+5. Verify that the `FestivalPage` instance is created with a non-null `wait` object.
+6. Verify that the `SoftAssert` instance is created and used correctly to handle assertions.
+7. Verify that the `swipe` method is called with valid input parameters for each festival band in the festivals list.
+8. Verify that the `getFestivals` method of the `FestivalPage` instance is called with valid input parameters for each festival band in the festivals list.
+9. Verify that the `getFestivals` method returns a non-empty `Optional` object for each festival band in the festivals list.
+10. Verify that the `title` and `name` properties of the `FestivalBand` object returned by the `getFestivals` method match the expected values for each festival band in the festivals list.
+11. Verify that the `swipe` method is called with valid input parameters for any festival bands that were not found on the first attempt.
+12. Verify that the `getFestivals` method of the `FestivalPage` instance is called again with valid input parameters for any festival bands that were not found on the first attempt.
+13. Verify that the `getFestivals` method returns a non-empty `Optional` object for any festival bands that were not found on the first attempt.
+14. Verify that the `title` and `name` properties of the `FestivalBand` object returned by the `getFestivals` method match the expected values for any festival bands that were not found on the first attempt.
+15. Verify that the `assertAll` method of the `SoftAssert` instance is called exactly once at the end of the method execution.
