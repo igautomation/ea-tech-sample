@@ -1,6 +1,9 @@
 # ea-tech-sample
 energyaustralia-coding-test
 
+## Author
+- Muhammad Imran
+- Email: muhammadghouseimran.zahirudeen@cognizant.com
 
 # Festivals Mobile App Testing
 
@@ -25,38 +28,21 @@ To run the tests, follow these steps:
 4. Run the command `mvn clean test`.
 
 ## Test Results
-
-The test results can be found in the `target/EA_MOBILE_YYYY.MM.DD.hh.mm.ss.html` directory. Open the `index.html` file in a web browser to view the test report.
+The test results can be found in the `target/EA_MOBILE_YYYY.MM.DD.hh.mm.ss.html` directory. Open the `.html` file in a web browser to view the test report.
 
 ## Test Structure
-
 The tests are written using TestNG and follow a page object model structure. The test classes and pages are located in the `src/test/java` directory.
 
 ### Android Tests
-
 The Android tests are located in the `AndroidFestivalTest` class. This class uses the `AndroidManager` class to create an Android driver and the `FestivalPage` class to interact with the app.
 
 ### iOS Tests
-
 The iOS tests are located in the `IOSFestivalTest` class. This class uses the `IOSManager` class to create an iOS driver and the `FestivalPage` class to interact with the app.
 
-## Authors
-
-- Muhammad Imran (muhammadghouseimran.zahirudeen@cognizant.com)
-
-## License
-
-
 # Android Manager
-
 This code initializes the Android driver and sets the capabilities required for testing an Android app. The Android driver is created using the AppiumDriverLocalService, and the capabilities are set using UiAutomator2Options.
 
-## Author
-- Muhammad Imran
-- Email: muhammadghouseimran.zahirudeen@cognizant.com
-
 ## Usage
-
 This code is intended to be used in conjunction with an Android app testing framework.
 
 To use this code:
@@ -73,16 +59,8 @@ This code has the following dependencies:
 - io.appium.java_client.service.local.AppiumDriverLocalService
 - org.openqa.selenium.Capabilities
 
-## License
-
-
 # iOS Manager
-
 This code initializes the iOS driver and sets the capabilities required for testing an iOS app. The iOS driver is created using the AppiumDriverLocalService, and the capabilities are set using XCUITestOptions.
-
-## Author
-- Muhammad Imran
-- Email: muhammadghouseimran.zahirudeen@cognizant.com
 
 ## Usage
 
@@ -102,10 +80,7 @@ This code has the following dependencies:
 - io.appium.java_client.service.local.AppiumDriverLocalService
 - org.openqa.selenium.Capabilities
 
-## License
-
 # Android Festival Test
-
 This is a Test Class for Android Test, which tests the functionality of Festival Listings on an Android device using Appium automation framework and RestAssured for API testing.
 
 ## Prerequisites
@@ -137,16 +112,12 @@ This is a Test Class for Android Test, which tests the functionality of Festival
 2. Run the class or individual test methods
 
 ## Test Description
-
 The `testFestivalListingsAndroid` method tests the functionality of Festival Listings on an Android device. It retrieves a list of festivals from an API endpoint using RestAssured and asserts that each festival and its bands are displayed on the UI using the `FestivalPage` page object class. The test uses a SoftAssert to ensure that all assertions are executed before the test fails.
 
 ## Clean Up
-
 The `tearDownClass` method is called after all the tests have completed execution. It closes the Android driver and stops the Appium service.
 
-
 # IOS Festival Test
-
 This is a Test class for the iOS application that tests the festival listings on the application. The tests use Appium, RestAssured and TestNG frameworks to automate the testing of the iOS application.
 
 ## Prerequisites
@@ -178,17 +149,13 @@ This is a Test class for the iOS application that tests the festival listings on
 2. Run the class or individual test methods
 
 ## Test Description
-
 testFestivalListingsiOS - This test case retrieves a list of festivals from a REST API, and checks if the festival and the bands are displayed correctly on the iOS application. If the bands are not visible on the current page, it scrolls down until it is visible or until it reaches the end of the page. If the bands are still not visible, it scrolls up until it is visible or until it reaches the top of the page. It then asserts that the festival and the bands are displayed correctly on the iOS application.
 
 ## Clean Up
-
 The `tearDownClass` method is called after all the tests have completed execution. It closes the iOS driver and stops the Appium service.
 
 
-
 # Test Suite XML file
-
 This is an XML configuration file used by TestNG framework to execute a suite of automated tests for EA Mobile Application on both Android and iOS platforms.
 
 ## Purpose
@@ -212,10 +179,10 @@ $ java -cp "/path/to/testng.jar:/path/to/project/classes/" org.testng.TestNG sui
 Replace "/path/to/testng.jar" with the path to the TestNG JAR file, and "/path/to/project/classes/" with the path to the directory containing the compiled test classes.
 
 
-## Assumption
-
+## Assumptions App Behavior
 * Record Label is not implemented in both the apps [iOS, Android]
 * API response is not static and inconsistent. Response Data changes on each call in the test
+* API throws identical response while calling from test and app during test execution
 * Android App List view is not displaying "Band" item with no "Festival" data
 * iOS App List view is not displaying repeated "Band" item even with unique "Festival" data
 
@@ -229,7 +196,7 @@ The provided code is a Test class for Android Test, which contains the following
 - `getExpectedFestivals()`: Private method that returns the expected Festival listings as a string.
 - `getFestivalsAsList()`: Private method that returns the expected Festival listings as a list of Festival objects.
 
-## Here are some test cases that can be used to test the `testFestivalListingsAndroid()` method:
+## Test cases that can be used to test the `testFestivalListingsAndroid()` method:
 
 - Test Case 1: Verify that all the expected bands are present in their respective festivals.
 
